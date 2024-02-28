@@ -15,9 +15,7 @@ namespace Oxygen
 	{
 		public event Action<float> ValueChanged;
 		public event Action Finished;
-
-		public bool IsPaused => _isPaused;
-
+		
 		private float _remainingSeconds;
 		private readonly TimerType _type;
 
@@ -146,6 +144,11 @@ namespace Oxygen
 
 			ValueChanged?.Invoke(_remainingSeconds);
 			Finished?.Invoke();
+		}
+
+		public bool CheckPaused()
+		{
+			return _isPaused;
 		}
 	}
 }

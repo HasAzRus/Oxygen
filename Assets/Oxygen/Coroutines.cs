@@ -6,22 +6,22 @@
 		{
 			get
 			{
-				return s_instance;
+				return _instance;
 			}
 		}
 
-		private static Coroutines s_instance;
+		private static Coroutines _instance;
 
 		protected override void Awake()
 		{
 			base.Awake();
 
-			if(s_instance != null)
+			if(_instance != null)
 			{
-				Destroy(s_instance);
+				Destroy(_instance);
 			}
 
-			s_instance = this;
+			_instance = this;
 		}
 	}
 }
