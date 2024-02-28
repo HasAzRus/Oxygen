@@ -1,16 +1,6 @@
 ﻿namespace Oxygen
 {
-	public interface IDataReader
-	{
-		T Read<T>(string name, T valueByDefault);
-	}
-	
-	public interface IDataWriter
-	{
-		void Write<T>(string name, T value);
-	}
-	
-	public class DataTransfer : IDataWriter, IDataReader
+	public class DataTransfer
 	{
 		public static DataTransfer Instance
 		{
