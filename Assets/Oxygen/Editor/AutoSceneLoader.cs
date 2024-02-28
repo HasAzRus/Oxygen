@@ -7,9 +7,6 @@ namespace Oxygen.Editor
 	[InitializeOnLoad]
 	public static class AutoSceneLoader
 	{
-		private const string EntryScenePath = "Assets/Content/Scenes/Entry Scene.unity";
-		private const string ActiveScenePrefKey = "activeScene";
-
 		static AutoSceneLoader()
 		{
 			EditorApplication.playModeStateChanged += EditorApplicationOnPlayModeStateChanged;
@@ -25,17 +22,17 @@ namespace Oxygen.Editor
 				}
 
 				var path = UnityEngine.SceneManagement.SceneManager.GetActiveScene().path;
-				EditorPrefs.SetString(ActiveScenePrefKey, path);
+				EditorPrefs.SetString(Preferences.ActiveScenePrefKey, path);
 
 				if (EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo())
 				{
 					try
 					{
-						EditorSceneManager.OpenScene(EntryScenePath);
+						EditorSceneManager.OpenScene(Preferences.DefaultEntryScenePath);
 					}
 					catch
 					{
-						Debug.LogError($"Cannot load scene {EntryScenePath}");
+						Debug.LogError($"Cannot load scene {Preferences.DefaultEntryScenePath}");
 						EditorApplication.isPlaying = false;
 					}
 				}
@@ -48,7 +45,7 @@ namespace Oxygen.Editor
 
 			if (!EditorApplication.isPlaying && !EditorApplication.isPlayingOrWillChangePlaymode)
 			{
-				var path = EditorPrefs.GetString(ActiveScenePrefKey);
+				var path = EditorPrefs.GetString(Preferences.ActiveScenePrefKey);
 
 				try
 				{

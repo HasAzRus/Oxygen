@@ -44,8 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7baaf28ab6e797b4b8f9f695ec8e8493, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _defaultPlayer: {fileID: 1693412905875439644, guid: 572cb82115bcb24478a2c0865479cb29,
-    type: 3}
-  _defaultUserInterface: {fileID: 754780815431930795, guid: 52e4be702c6d17e4e826469c0c00491a,
-    type: 3}
+  _defaultPlayer: {fileID: 3214026088503487580, guid: 6982504af77c6bf46aee4098cf8c12a5, type: 3}
+  _defaultUserInterface: {fileID: 754780815431930795, guid: 85658ebb86b2e4b49a4ca8be2d4d48e9, type: 3}
   _launcher: {fileID: 11400000, guid: 5a106a6b48bad2d489a43c73722ae65f, type: 2}

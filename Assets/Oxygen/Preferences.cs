@@ -15,5 +15,8 @@ namespace Oxygen
 
 		public static string DefaultLauncherPath;
 		public static string DefaultLevelsPath;
+		
+		public static string DefaultEntryScenePath;
+		public static string ActiveScenePrefKey;
 	}
 }

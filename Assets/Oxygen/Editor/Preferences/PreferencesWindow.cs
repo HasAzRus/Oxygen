@@ -25,6 +25,10 @@ namespace Oxygen.Editor
 		private string _defaultLauncherPath;
 		private string _defaultLevelsPath;
 
+		private bool _autoSceneLoaderFoldout;
+		private string _defaultEntryScenePath;
+		private string _activeScenePrefKey;
+
 		private void Load()
 		{
 			PreferencesEditor.Load();
@@ -43,6 +47,9 @@ namespace Oxygen.Editor
 
 			_defaultLauncherPath = Preferences.DefaultLauncherPath;
 			_defaultLevelsPath = Preferences.DefaultLevelsPath;
+			
+			_defaultEntryScenePath = Preferences.DefaultEntryScenePath;
+			_activeScenePrefKey = Preferences.ActiveScenePrefKey;
 		}
 
 		private void Save()
@@ -60,6 +67,9 @@ namespace Oxygen.Editor
 
 			Preferences.DefaultLauncherPath = _defaultLauncherPath;
 			Preferences.DefaultLevelsPath = _defaultLevelsPath;
+			
+			Preferences.DefaultEntryScenePath = _defaultEntryScenePath;
+			Preferences.ActiveScenePrefKey = _activeScenePrefKey;
 
 			PreferencesEditor.Save();
 		}
@@ -131,6 +141,32 @@ namespace Oxygen.Editor
 				EditorGUILayout.EndHorizontal();
 			}
 			
+			EditorGUILayout.EndFoldoutHeaderGroup();
+
+			_autoSceneLoaderFoldout = EditorGUILayout.BeginFoldoutHeaderGroup(_autoSceneLoaderFoldout,"Auto-scene Loader");
+
+			if (_autoSceneLoaderFoldout)
+			{
+				EditorGUILayout.BeginHorizontal();
+
+				GUILayout.Label("Default Entry Scene Path");
+				_defaultEntryScenePath = EditorGUILayout.TextField(_defaultEntryScenePath);
+
+				if (GUILayout.Button("Select from assets"))
+				{
+					OxEditor.CheckAssetByPath<SceneAsset>(_defaultEntryScenePath);
+				}
+
+				EditorGUILayout.EndHorizontal();
+
+				EditorGUILayout.BeginHorizontal();
+				
+				GUILayout.Label("Active Scene Pref Key");
+				_activeScenePrefKey = EditorGUILayout.TextField(_activeScenePrefKey);
+				
+				EditorGUILayout.EndHorizontal();
+			}
+
 			EditorGUILayout.EndFoldoutHeaderGroup();
 			
 			if (GUILayout.Button("Save"))
