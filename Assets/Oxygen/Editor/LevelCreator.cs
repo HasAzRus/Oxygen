@@ -1,5 +1,5 @@
-﻿using System.Linq;
-using Oxygen;
+﻿using System.IO;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
@@ -15,11 +15,19 @@ namespace Oxygen.Editor
 
 		public static void Create(UnityEngine.SceneManagement.Scene scene)
 		{
+			var path = Preferences.DefaultLevelsPath;
+			
 			var level = ScriptableObject.CreateInstance<Level>();
+			
 			level.SetName(scene.name);
 			level.SetPath(scene.path);
 
-			AssetDatabase.CreateAsset(level, $"{Preferences.DefaultLevelsPath}{scene.name}_Level.asset");
+			if (!Directory.Exists(path))
+			{
+				Directory.CreateDirectory(path);
+			}
+			
+			AssetDatabase.CreateAsset(level, $"{path}{scene.name}_Level.asset");
 			AssetDatabase.SaveAssets();
 
 			AddToBuild(level);

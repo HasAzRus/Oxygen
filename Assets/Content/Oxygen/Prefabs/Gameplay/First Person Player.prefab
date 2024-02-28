@@ -66,8 +66,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _camera: {fileID: 8163493304580627628}
-  _defaultMinVerticalAngle: -90
-  _defaultMaxVerticalAngle: 90
+  _minVerticalAngle: -90
+  _maxVerticalAngle: 90
 --- !u!143 &6590808757442717944
 CharacterController:
   m_ObjectHideFlags: 0
