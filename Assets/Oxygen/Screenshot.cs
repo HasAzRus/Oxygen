@@ -14,7 +14,7 @@ namespace Oxygen
                 Directory.CreateDirectory(path);
             }
             
-            ScreenCapture.CaptureScreenshot(path + $"/{name}.png", 2);
+            ScreenCapture.CaptureScreenshot(path + $"/{name}.png", superSize);
         }
     }
 }
